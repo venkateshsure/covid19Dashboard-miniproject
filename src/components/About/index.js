@@ -1,5 +1,17 @@
+import Footer from '../Footer'
+
+import Header from '../Header'
+
 import './index.css'
 
-const About = () => <h1>About</h1>
+const About = () => (
+  <>
+    <Header />
+    <div>
+      <p>hi</p>
+    </div>
+    <Footer />
+  </>
+)
 
 export default About
