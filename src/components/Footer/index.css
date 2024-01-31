@@ -1,0 +1,56 @@
+.footer-head-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.footer-para {
+  font-family: Bree Serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+  background: linear-gradient(0deg, #f8fafc, #f8fafc);
+}
+
+.footer-span {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+  background: linear-gradient(0deg, #3b82f6, #3b82f6);
+}
+
+.footer-covid-india-con {
+  width: 156px;
+  height: 32px;
+  top: 1260px;
+  left: 642px;
+}
+
+.footer-desc {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  width: 348px;
+  height: 24px;
+  top: 1316px;
+  left: 546px;
+  background: rgba(148, 163, 184, 1);
+}
+
+.react-icons-con {
+  width: 50%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

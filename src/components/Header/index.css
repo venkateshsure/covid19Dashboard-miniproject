@@ -1,0 +1,74 @@
+.header-head-con {
+  display: flex;
+  flex-direction: row;
+  background: rgba(30, 30, 48, 1);
+  width: 100%;
+}
+
+.header-con {
+  display: flex;
+  justify-content: space-around;
+  width: 1440px;
+  height: 80px;
+}
+
+.header-para {
+  font-family: Bree Serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  background: linear-gradient(0deg, #3b82f6, #3b82f6);
+}
+
+.header-span {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  background: linear-gradient(0deg, #f8fafc, #f8fafc);
+}
+
+.home-about-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.header-nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #475569;
+}
+
+.header-home {
+  width: 43px;
+  height: 24px;
+  top: 28px;
+  left: 1156px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  background: rgba(248, 250, 252, 1);
+}
+
+.header-about {
+  width: 43px;
+  height: 24px;
+  top: 28px;
+  left: 1247px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
