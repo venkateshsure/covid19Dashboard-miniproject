@@ -1,8 +1,12 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
+import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
+
 import Header from '../Header'
 import Footer from '../Footer'
+import CovidSelect from '../CovidSelect'
+import StateWiseData from '../StateWiseData'
 
 import './index.css'
 
@@ -226,45 +230,37 @@ class Home extends Component {
         <div>
           <h1>search</h1>
         </div>
-        <div className="overall-data-con">
-          <div className="cases-con">
-            <p className="confirm-text">Confirmed</p>
-            <img
-              src="https://res.cloudinary.com/dzfhyklmn/image/upload/v1706711660/ldsocwg4j5ok5kynvugb.png"
-              alt="check-mark"
-              className="check-mark-img"
-            />
-            <p className="confirmed-cases">12345</p>
+        <CovidSelect />
+        <div className="home-state-wise-data-con">
+          <div className="home-table-head-con">
+            <div className="home-table-head-con1">
+              <p className="home-states-ut">States/UT</p>
+              <button
+                type="button"
+                aria-label="Sort Ascending"
+                className="asc-btn"
+              >
+                <FcGenericSortingAsc />
+              </button>
+              <button
+                type="button"
+                aria-label="Sort Descending"
+                className="desc-btn"
+              >
+                <FcGenericSortingDesc />
+              </button>
+              <p className="home-confirmed">Confirmed</p>
+              <p className="home-active">Active</p>
+              <p className="home-recovered">Recovered</p>
+              <p className="home-deceased">Deceased</p>
+              <p className="home-population">Population</p>
+            </div>
           </div>
-          <div className="cases-con">
-            <p className="active-text">Active</p>
-            <img
-              src="https://res.cloudinary.com/dzfhyklmn/image/upload/v1706668230/zvp5o9uqi4yeun59xmrg.png"
-              alt="active"
-              className="active-img"
-            />
-            <p className="active-cases">12345</p>
-          </div>
-
-          <div className="cases-con">
-            <p className="recover-text">Recovered</p>
-            <img
-              src="https://res.cloudinary.com/dzfhyklmn/image/upload/v1706711674/wk1rf8y2sn3xhivneohm.png"
-              alt="recover"
-              className="recover-img"
-            />
-            <p className="recover-cases">12345</p>
-          </div>
-
-          <div className="cases-con">
-            <p className="decreased-text">Decreased</p>
-            <img
-              src="https://res.cloudinary.com/dzfhyklmn/image/upload/v1706668700/cbxw01c8peva0mwwyllk.png"
-              alt="decreased"
-              className="decreased-img"
-            />
-            <p className="decreased-cases">12345</p>
-          </div>
+          <ul className="home-table-head-con">
+            {stateWiseData.map(eachState => (
+              <StateWiseData key={eachState.stateCode} eachState={eachState} />
+            ))}
+          </ul>
         </div>
       </div>
     )

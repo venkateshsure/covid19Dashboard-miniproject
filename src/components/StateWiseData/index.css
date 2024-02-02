@@ -1,0 +1,85 @@
+.state-wise-list-con {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(71, 85, 105, 1);
+}
+
+.li-state-ut {
+  width: 203px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(241, 245, 249, 1);
+}
+
+.li-confirmed {
+  width: 32px;
+  height: 24px;
+  top: 2240px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(255, 7, 58, 1);
+}
+
+.li-active {
+  width: 32px;
+  height: 24px;
+  top: 2240px;
+
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(0, 123, 255, 1);
+}
+
+.li-recovered {
+  width: 32px;
+  height: 24px;
+  top: 2240px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(40, 167, 69, 1);
+}
+
+.li-deceased {
+  width: 32px;
+  height: 24px;
+  top: 2240px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(108, 117, 125, 1);
+}
+
+.li-population {
+  width: 32px;
+  height: 24px;
+  top: 2240px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: rgba(148, 163, 184, 1);
+}
