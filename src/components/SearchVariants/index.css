@@ -11,6 +11,10 @@
   border: 1px solid rgba(148, 163, 184, 1);
 }
 
+.search-variants-link-item {
+  text-decoration: none;
+}
+
 .search-variants-name {
   width: 113px;
   height: 24px;
