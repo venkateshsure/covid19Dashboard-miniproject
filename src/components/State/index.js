@@ -1,6 +1,9 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
+import Header from '../Header'
+import Footer from '../Footer'
+
 import './index.css'
 
 const apiStatusConstants = {
@@ -16,13 +19,18 @@ class State extends Component {
   }
 
   componentDidMount() {
+    this.setState({status: apiStatusConstants.inProgress})
+    this.getStateData()
+  }
+
+  getStateData = () => {
     const {match} = this.props
     const {params} = match
     const {stateCode} = params
     console.log(stateCode)
   }
 
-  renderSuccessView = () => <p>success</p>
+  renderSuccessView = () => <h1>hi</h1>
 
   renderLoadingView = () => (
     <div className="home-loader-con">
@@ -43,7 +51,13 @@ class State extends Component {
   }
 
   render() {
-    return <div>{this.renderStateData()}</div>
+    return (
+      <>
+        <Header />
+        <div>{this.renderStateData()}</div>
+        <Footer />
+      </>
+    )
   }
 }
 
