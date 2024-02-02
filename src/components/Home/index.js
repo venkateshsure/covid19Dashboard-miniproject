@@ -2,11 +2,13 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
+import {BsSearch} from 'react-icons/bs'
 
 import Header from '../Header'
 import Footer from '../Footer'
 import CovidSelect from '../CovidSelect'
 import StateWiseData from '../StateWiseData'
+import SearchVariants from '../SearchVariants'
 
 import './index.css'
 
@@ -165,7 +167,12 @@ const apiStatusConstants = {
 }
 
 class Home extends Component {
-  state = {status: apiStatusConstants.initial, stateWiseData: []}
+  state = {
+    status: apiStatusConstants.initial,
+    stateWiseData: [],
+    input: '',
+    searchedStates: [],
+  }
 
   componentDidMount = () => {
     this.getCovidData()
@@ -223,45 +230,84 @@ class Home extends Component {
     this.setState({stateWiseData: data, status: apiStatusConstants.success})
   }
 
+  onChangeInput = event => {
+    this.setState({input: event.target.value})
+  }
+
+  getStates = event => {
+    if (event.key === 'Enter') {
+      const {stateWiseData, input} = this.state
+      const result = stateWiseData.filter(each =>
+        each.name.toLowerCase().includes(input.toLowerCase()),
+      )
+      this.setState({searchedStates: result})
+    }
+  }
+
   renderSuccessView = () => {
-    const {stateWiseData} = this.state
+    const {stateWiseData, input, searchedStates} = this.state
+    console.log(searchedStates)
     return (
       <div className="home-head-con">
-        <div>
-          <h1>search</h1>
-        </div>
-        <CovidSelect />
-        <div className="home-state-wise-data-con">
-          <div className="home-table-head-con">
-            <div className="home-table-head-con1">
-              <p className="home-states-ut">States/UT</p>
-              <button
-                type="button"
-                aria-label="Sort Ascending"
-                className="asc-btn"
-              >
-                <FcGenericSortingAsc />
-              </button>
-              <button
-                type="button"
-                aria-label="Sort Descending"
-                className="desc-btn"
-              >
-                <FcGenericSortingDesc />
-              </button>
-              <p className="home-confirmed">Confirmed</p>
-              <p className="home-active">Active</p>
-              <p className="home-recovered">Recovered</p>
-              <p className="home-deceased">Deceased</p>
-              <p className="home-population">Population</p>
-            </div>
+        <div className="home-search-con">
+          <div className="search-input-con">
+            <BsSearch className="search-icon" />
+            <input
+              type="search"
+              placeholder="Enter the state"
+              className="input"
+              onChange={this.onChangeInput}
+              onKeyDown={this.getStates}
+              value={input}
+            />
           </div>
-          <ul className="home-table-head-con">
-            {stateWiseData.map(eachState => (
-              <StateWiseData key={eachState.stateCode} eachState={eachState} />
+        </div>
+
+        {searchedStates.length === 0 ? (
+          <>
+            <CovidSelect />
+            <div className="home-state-wise-data-con">
+              <div className="home-table-head-con">
+                <div className="home-table-head-con1">
+                  <p className="home-states-ut">States/UT</p>
+                  <button
+                    type="button"
+                    aria-label="Sort Ascending"
+                    className="asc-btn"
+                  >
+                    <FcGenericSortingAsc />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Sort Descending"
+                    className="desc-btn"
+                  >
+                    <FcGenericSortingDesc />
+                  </button>
+                  <p className="home-confirmed">Confirmed</p>
+                  <p className="home-active">Active</p>
+                  <p className="home-recovered">Recovered</p>
+                  <p className="home-deceased">Deceased</p>
+                  <p className="home-population">Population</p>
+                </div>
+              </div>
+              <ul className="home-table-head-con">
+                {stateWiseData.map(eachState => (
+                  <StateWiseData
+                    key={eachState.stateCode}
+                    eachState={eachState}
+                  />
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : (
+          <ul className="home-search-variants">
+            {searchedStates.map(each => (
+              <SearchVariants each={each} key={each.stateCode} />
             ))}
           </ul>
-        </div>
+        )}
       </div>
     )
   }

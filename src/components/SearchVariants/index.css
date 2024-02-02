@@ -1,0 +1,66 @@
+.search-variants-li-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 824px;
+  height: 64px;
+  top: 284px;
+  left: 308px;
+  border: 1px solid rgba(148, 163, 184, 1);
+}
+
+.search-variants-name {
+  width: 113px;
+  height: 24px;
+  top: 240px;
+  left: 356px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: rgba(100, 116, 139, 1);
+}
+
+.search-variants-sec-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 32px;
+  top: 236px;
+  left: 1032px;
+  padding: 4px, 6px, 4px, 6px;
+  border-radius: 4px;
+  background: rgba(28, 212, 212, 0.16);
+}
+
+.search-variants-state-code {
+  width: 20px;
+  height: 24px;
+  font-family: 'HK Grotesk';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(250, 204, 21, 1);
+}
+
+.bi-square-button {
+  width: 24px;
+  height: 24px;
+}
+
+.bi-square {
+  width: 5.5px;
+  height: 9px;
+  top: 7.5px;
+  left: 15px;
+  transform: angle(-180deg);
+  color: rgba(250, 204, 21, 1);
+}
