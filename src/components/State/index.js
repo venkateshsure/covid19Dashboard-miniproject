@@ -23,11 +23,21 @@ class State extends Component {
     this.getStateData()
   }
 
-  getStateData = () => {
+  getStateData = async () => {
     const {match} = this.props
     const {params} = match
     const {stateCode} = params
     console.log(stateCode)
+    const options = {
+      method: 'GET',
+    }
+    const response = await fetch(
+      'https://apis.ccbp.in/covid19-state-wise-data',
+      options,
+    )
+    const responseData = await response.json()
+
+    console.log(responseData)
   }
 
   renderSuccessView = () => <h1>hi</h1>

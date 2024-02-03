@@ -265,7 +265,7 @@ class Home extends Component {
 
         {searchedStates.length === 0 ? (
           <>
-            <CovidSelect />
+            <CovidSelect stateWiseData={stateWiseData} />
             <div className="home-state-wise-data-con">
               <div className="home-table-head-con">
                 <div className="home-table-head-con1">
