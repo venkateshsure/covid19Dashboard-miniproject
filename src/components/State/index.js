@@ -5,6 +5,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 
 import './index.css'
+import CovidContext from '../../context/CovidContext'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -19,28 +20,29 @@ class State extends Component {
   }
 
   componentDidMount() {
-    this.setState({status: apiStatusConstants.inProgress})
     this.getStateData()
   }
 
   getStateData = async () => {
+    this.setState({status: apiStatusConstants.success})
     const {match} = this.props
     const {params} = match
     const {stateCode} = params
     console.log(stateCode)
-    const options = {
-      method: 'GET',
-    }
-    const response = await fetch(
-      'https://apis.ccbp.in/covid19-state-wise-data',
-      options,
-    )
-    const responseData = await response.json()
-
-    console.log(responseData)
   }
 
-  renderSuccessView = () => <h1>hi</h1>
+  renderSuccessView = () => {
+    console.log('consumer')
+    return (
+      <CovidContext.Consumer>
+        {value => {
+          const {stateWiseData} = value
+          console.log(stateWiseData)
+          return <h1>hii</h1>
+        }}
+      </CovidContext.Consumer>
+    )
+  }
 
   renderLoadingView = () => (
     <div className="home-loader-con">
@@ -64,7 +66,7 @@ class State extends Component {
     return (
       <>
         <Header />
-        <div>{this.renderStateData()}</div>
+        <div className="state-head-con">{this.renderStateData()}</div>
         <Footer />
       </>
     )

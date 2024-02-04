@@ -246,7 +246,7 @@ class Home extends Component {
 
   renderSuccessView = () => {
     const {stateWiseData, input, searchedStates} = this.state
-    console.log(searchedStates)
+
     return (
       <div className="home-head-con">
         <div className="home-search-con">
