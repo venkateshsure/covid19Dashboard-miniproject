@@ -1,21 +1,18 @@
 import './index.css'
 
 const CovidSelect = props => {
-  const {stateWiseData} = props
-  const confirmed = stateWiseData.reduce(
+  const {data} = props
+  const confirmed = data.reduce(
     (acc, eachState) => acc + eachState.confirmed,
     0,
   )
 
-  const recovered = stateWiseData.reduce(
+  const recovered = data.reduce(
     (acc, eachState) => acc + eachState.recovered,
     0,
   )
 
-  const deceased = stateWiseData.reduce(
-    (acc, eachState) => acc + eachState.deceased,
-    0,
-  )
+  const deceased = data.reduce((acc, eachState) => acc + eachState.deceased, 0)
 
   const active = confirmed - (recovered + deceased)
 

@@ -3,9 +3,10 @@ import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
 import Footer from '../Footer'
+import CovidSelect from '../CovidSelect'
+import TopDistricts from '../TopDistricts'
 
 import './index.css'
-// import CovidContext from '../../context/CovidContext'
 
 const statesList = [
   {
@@ -165,10 +166,41 @@ class State extends Component {
   state = {
     status: apiStatusConstants.initial,
     stateData: [],
+    districtData: [],
   }
 
   componentDidMount() {
     this.getStateData()
+  }
+
+  convertDistrictObjectsToArray = districtData => {
+    // getting keys of an object object
+    const keyNames = Object.keys(districtData)
+
+    console.log(districtData)
+
+    const districtList = keyNames.map(keyName => {
+      if (districtData[keyName]) {
+        const {total} = districtData[keyName]
+
+        // if the state's covid data is available we will store it or we will store 0
+        const confirmed = total.confirmed ? total.confirmed : 0
+        const deceased = total.deceased ? total.deceased : 0
+        const recovered = total.recovered ? total.recovered : 0
+        return {
+          districtName: keyName,
+          confirmed,
+          deceased,
+          recovered,
+          active: confirmed - (deceased + recovered),
+        }
+      }
+      return null
+    })
+
+    const filterDistricts = districtList.filter(each => each !== null)
+
+    this.setState({districtData: filterDistricts})
   }
 
   convertObjectsDataIntoListItemsUsingForInMethod = responseData => {
@@ -187,8 +219,9 @@ class State extends Component {
       if (responseData[keyName]) {
         const {total} = responseData[keyName]
         const {districts} = responseData[keyName]
-        console.log(districts)
-        // if the state's covid data is available we will store it or we will store 0
+
+        this.convertDistrictObjectsToArray(districts)
+
         const confirmed = total.confirmed ? total.confirmed : 0
         const deceased = total.deceased ? total.deceased : 0
         const recovered = total.recovered ? total.recovered : 0
@@ -227,6 +260,7 @@ class State extends Component {
       options,
     )
     const responseData = await response.json()
+    console.log(responseData)
 
     const data = this.convertObjectsDataIntoListItemsUsingForInMethod(
       responseData,
@@ -236,8 +270,9 @@ class State extends Component {
   }
 
   renderSuccessView = () => {
-    const {stateData} = this.state
-    console.log(stateData[0].lastUpdatedDate)
+    const {stateData, districtData} = this.state
+    console.log(districtData)
+
     return (
       <div className="state-con">
         <div className="state-dis-con">
@@ -252,6 +287,8 @@ class State extends Component {
             <p className="state-con-state-tested">{stateData[0].tested}</p>
           </div>
         </div>
+        <CovidSelect data={districtData} />
+        <TopDistricts data={districtData} />
       </div>
     )
   }
